@@ -14,6 +14,7 @@ namespace ChallengeAlternativo.Controllers
     [Route("api/[controller]")]
     public class CitiesController : ControllerBase
     {
+
         private readonly ICitiesRepository _repository;
 
         public CitiesController(ICitiesRepository repository)
@@ -113,5 +114,6 @@ namespace ChallengeAlternativo.Controllers
 
             return Ok("Su ciudad o país ha sido modificado correctamente.");
         }
+
     }
 }

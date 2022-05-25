@@ -14,7 +14,6 @@ namespace ChallengeAlternativo.Repositories
         Task<List<City>> GetByName(string name);
         Task<List<City>> GetByContinent(int continentId);
         Task<List<City>> GetOrdered(string order);
-        //Task<bool> Add(AddCityViewModel city);
     }
     public class CitiesRepository : GenericRepository<City>, ICitiesRepository
     {
@@ -73,31 +72,5 @@ namespace ChallengeAlternativo.Repositories
                 throw new Exception(e.Message);
             }
         }
-
-        //public async Task<bool> Add(AddCityViewModel city)
-        //{
-        //    try
-        //    {
-        //        var entity = new City()
-        //        {
-        //            CityId = null,
-        //            Name = city.Name,
-        //            Image = city.Image,
-        //            Area = city.Area,
-        //            Population = city.Population,
-        //            ContinentId = city.ContinentId,
-        //            GeographicIcon = city.GeographicIcon
-        //        };
-
-        //        await _context.Cities.AddAsync(entity);
-        //        await _context.SaveChangesAsync();
-        //        return await Task.FromResult(true);
-
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        throw new Exception(e.Message);
-        //    }
-        //}
     }
 }
