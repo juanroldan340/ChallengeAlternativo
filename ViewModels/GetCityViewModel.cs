@@ -4,7 +4,7 @@ namespace ChallengeAlternativo.ViewModels
 {
     public class GetCityViewModel : GenericViewModel
     {
-        [Display(Name="Cantidad de Habitantes")]
+        [Display(Name = "Cantidad de Habitantes")]
         public double Population { get; set; }
     }
 }

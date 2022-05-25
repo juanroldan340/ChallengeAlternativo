@@ -51,14 +51,14 @@ namespace ChallengeAlternativo.Controllers
             return Ok(list);
         }
 
-        [HttpGet("name={name}")]
+        [HttpGet("name")]
         public async Task<IActionResult> GetGeographicIconByName(string name)
         {
             var list = await _repository.GetByName(name);
             return Ok(list);
         }
         
-        [HttpGet("name={name}")]
+        [HttpGet("name")]
         public async Task<IActionResult> GetGeographicIconByCity(int cityId)
         {
             var list = await _repository.GetByCity(cityId);
@@ -69,7 +69,7 @@ namespace ChallengeAlternativo.Controllers
             return Ok(list);
         }
 
-        [HttpGet("name={name}")]
+        [HttpGet("date")]
         public async Task<IActionResult> GetGeographicIconByDate(DateTime date)
         {
             var list = await _repository.GetAllByDate(date);
@@ -86,7 +86,7 @@ namespace ChallengeAlternativo.Controllers
             if (!await _repository.Add(geoIcon.ToGeographicIconModel()))
                 return NotFound("Error al agregar Ícono");
 
-            return Ok();
+            return Ok("Su Ícono ha sido agregada correctamente.");
         }
 
         [HttpDelete]
@@ -103,12 +103,13 @@ namespace ChallengeAlternativo.Controllers
         [HttpPut]
         public async Task<IActionResult> UpdateGeographicIcon(GeographicIcon geoIcon)
         {
-            var result = await _repository.Update(geoIcon);
+            if (geoIcon == null)
+                return BadRequest("Complete los campos correctamente");
 
-            if (!result)
-                return NotFound();
+            if (!await _repository.Update(geoIcon))
+                return NotFound("No se ha encontrado el Ícono.");
 
-            return await GetGeographicIcons();
+            return Ok("Su Ícono ha sido modificado correctamente.");
         }
     }
 }

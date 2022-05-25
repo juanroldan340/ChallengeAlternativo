@@ -4,15 +4,18 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ChallengeAlternativo.ViewModels
 {
-    public class AddGeographicIconsViewModel
+    public class AddGeographicIconsViewModel : GenericViewModel
     {
-        public int GeoIconId { get; set; }
-        public string Image { get; set; }
-        public string Name { get; set; }
+        [Display(Name = "Fecha de Creación")]
         public DateTime CreationDate { get; set; } = DateTime.Now;
+
+        [Display(Name = "Altura")]
         public double Height { get; set; }
+
+        [Display(Name = "Historia")]
         public string History { get; set; }
 
+        [Display(Name = "Ciudades")]
         public City City { get; set; } = null!;
 
         public GeographicIcon ToGeographicIconModel() 

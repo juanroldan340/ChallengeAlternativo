@@ -46,7 +46,7 @@ namespace ChallengeAlternativo.Controllers
             var model = await _repository.GetById(Id);
 
             if (model == null)
-                return NotFound("No se ha encontrado la ciudad especificada.");
+                return NotFound("No se ha encontrado la Ciudad o País especificado.");
 
             return Ok(model);
         }
@@ -57,7 +57,7 @@ namespace ChallengeAlternativo.Controllers
             var cities = await _repository.GetByContinent(continentId);
 
             if (cities == null)
-                return NotFound("No se ha encontrado la ciudad especificada.");
+                return NotFound("No se ha encontrado la Ciudad o País especificado.");
 
             return Ok(cities);
         }
@@ -68,7 +68,7 @@ namespace ChallengeAlternativo.Controllers
             var city = await _repository.GetByName(name);
 
             if (city == null)
-                return NotFound("No se encontró la ciudad");
+                return NotFound("No se encontró la Ciudad o País.");
 
             return Ok(city);
         }
@@ -90,7 +90,7 @@ namespace ChallengeAlternativo.Controllers
             if (!await _repository.Add(city.ToCityModel()))
                 return NotFound("Error al agregar al registro.");
 
-            return Ok("Su ciudad ha sido agreagada correctamente.");
+            return Ok("Su ciudad o País ha sido agreagada correctamente.");
         }
 
         [HttpDelete]
@@ -109,7 +109,7 @@ namespace ChallengeAlternativo.Controllers
                 return BadRequest("Complete los campos correctamente");
 
             if (!await _repository.Update(city.ToCityModel()))
-                return NotFound("No se ha encontrado la ciudad o país.");
+                return NotFound("No se ha encontrado la Ciudad o País.");
 
             return Ok("Su ciudad o país ha sido modificado correctamente.");
         }

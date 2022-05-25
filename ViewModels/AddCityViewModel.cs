@@ -6,9 +6,6 @@ namespace ChallengeAlternativo.ViewModels
 {
     public class AddCityViewModel : GenericViewModel
     {
-        [Required(ErrorMessage = "El Id es obligatorio.")]
-        public int CityId { get; set; }
-
         [Required(ErrorMessage = "La cantidad de habitantes es obligatoria")]
         [Display(Name = "Habitantes")]
         public int Population { get; set; }
